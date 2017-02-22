@@ -1,0 +1,11 @@
+---
+title: "Assignment 1"
+author: "Bongeka Buthelezi"
+date: "22 February 2017"
+output: html_document
+---
+
+## Hello Octocat
+I love octocat. She's the coolest cat in town
+![](https://dl.dropboxusercontent.com/u/11805474/painblogr/biostats/assignments/octocat.png)
+
