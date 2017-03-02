@@ -9,3 +9,13 @@ output: html_document
 I love octocat. She's the coolest cat in town
 ![](https://dl.dropboxusercontent.com/u/11805474/painblogr/biostats/assignments/octocat.png)
 
+quick_look
+```{r, echo = FALSE}
+data("anscombe")
+dim.data.frame(anscombe)
+colnames(anscombe)
+head(anscombe)
+tail(anscombe)
+summary(col(anscombe))
+```
+
