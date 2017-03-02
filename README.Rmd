@@ -3,8 +3,8 @@ title: "Assignment 1"
 author: "Bongeka Buthelezi"
 date: "22 February 2017"
 output:
-  html_document: default
   md_document: default
+  html_document: default
 ---
 
 ## Hello Octocat
