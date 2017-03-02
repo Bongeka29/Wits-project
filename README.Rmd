@@ -2,7 +2,9 @@
 title: "Assignment 1"
 author: "Bongeka Buthelezi"
 date: "22 February 2017"
-output: html_document
+output:
+  html_document: default
+  md_document: default
 ---
 
 ## Hello Octocat
@@ -10,8 +12,8 @@ I love octocat. She's the coolest cat in town
 ![](https://dl.dropboxusercontent.com/u/11805474/painblogr/biostats/assignments/octocat.png)
 
 quick_look
-```{r, echo = FALSE}
-data("anscombe")
+```{r, echo = TRUE}
+data(anscombe)
 dim.data.frame(anscombe)
 colnames(anscombe)
 head(anscombe)
