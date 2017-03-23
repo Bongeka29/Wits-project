@@ -2,9 +2,7 @@
 title: "Assignment 1"
 author: "Bongeka Buthelezi"
 date: "22 February 2017"
-output:
-  md_document: default
-  html_document: default
+output:HTML Doccument
 ---
 
 ## Hello Octocat
