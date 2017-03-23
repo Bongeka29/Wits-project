@@ -2,7 +2,7 @@
 title: "Assignment 1"
 author: "Bongeka Buthelezi"
 date: "22 February 2017"
-output:HTML Doccument
+output: html_document
 ---
 
 ## Hello Octocat
@@ -19,3 +19,17 @@ tail(anscombe)
 summary(col(anscombe))
 ```
 
+
+xy_plot
+```{r sessionSetup, include=TRUE}
+options (echo = FALSE,
+                    fig.path = './figures/',
+                    fig.align = 'center',
+                    fig.width = 8,
+                    fig.height = 8,
+                    dev = 'svg')
+data("anscombe")
+plot(anscombe$x1,anscombe$y1,main = "plot of X1 and Y1",xlab= "X1",ylab = "Y1")
+abline(lm(y1 ~ x1, data = anscombe))
+                    
+```
