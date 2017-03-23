@@ -20,6 +20,7 @@ summary(col(anscombe))
 ```
 
 
+
 xy_plot
 ```{r sessionSetup, include=TRUE}
 options (echo = FALSE,
