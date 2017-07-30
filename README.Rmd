@@ -2,16 +2,21 @@
 title: "Assignment 1"
 author: "Bongeka Buthelezi"
 date: "22 February 2017"
-output: html_document
+output:
+  md_document: default
+  html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 ## Hello Octocat
 I love octocat. She's the coolest cat in town
 ![](https://dl.dropboxusercontent.com/u/11805474/painblogr/biostats/assignments/octocat.png)
 
+
 quick_look
 ```{r, echo = TRUE}
-data(anscombe)
+data("anscombe")
 dim.data.frame(anscombe)
 colnames(anscombe)
 head(anscombe)
@@ -19,18 +24,123 @@ tail(anscombe)
 summary(col(anscombe))
 ```
 
+x_y plot
 
-
-xy_plot
-```{r sessionSetup, include=TRUE}
-options (echo = FALSE,
-                    fig.path = './figures/',
-                    fig.align = 'center',
-                    fig.width = 8,
-                    fig.height = 8,
-                    dev = 'svg')
+```{r sessionSetup, include= TRUE}
+# knitr chunk options
+options(echo = FALSE,
+               fig.align = "center",
+               fig.path = './figures/',
+               fig.width = 8,
+               fig.height = 8,
+               dev = c("svg"))
 data("anscombe")
-plot(anscombe$x1,anscombe$y1,main = "plot of X1 and Y1",xlab= "X1",ylab = "Y1")
+plot(anscombe$x1,anscombe$y1,main = "plot of X1 and Y1",xlab = "X1",ylab = "Y1")
 abline(lm(y1 ~ x1, data = anscombe))
-                    
+```
+
+##assignment 4
+quick_look
+```{r, echo=TRUE}
+library(readr)
+analgesic <- read_csv("https://dl.dropboxusercontent.com/u/11805474/painblogr/biostats/assignments/analgesic.csv")
+View(analgesic)
+df <- analgesic
+```
+
+data_summary
+summary of analgesic data
+```{r, echo=TRUE}
+View(analgesic)
+"df" <- analgesic
+data(df)
+dim.data.frame(df)
+colnames(df)
+head(df)
+tail(df)
+summary(col(df))
+```
+
+data_tidy
+```{r, echo=TRUE}
+library(dplyr)
+library(tidyr)
+library(readr)
+View(analgesic)
+gather(analgesic,na.rm = TRUE,convert = TRUE, factor_key = TRUE)
+summarise
+```
+
+##Assignment 5
+#Chicken Weights
+Null hypothesis: There will be no significant statistical difference between the groups
+Alternarive hypothesis: There will be a sigificant statistical difference between the groups
+Statistical test: One-way Anova
+Assumptions:
+1. Gaussian distribution
+2. Equal Variances across the groups
+3. Unpaired data 
+4. Errors are independent
+```{r, echo=TRUE}
+data("chickwts")
+boxplot(weight ~ feed, data = chickwts)
+bar <- aov(weight ~ feed, data = chickwts)
+summary(bar)
+```
+Interpretation of results:There is a significant statistical difference to show that the type of feed influeces growth rate.
+
+#The Hot Zone
+Null: There is no significant statitical difference between how much water the patients consumed and whether or not they became ill from it
+Alternative: There is a significant statistical difference between how much contaminated water the patient drank and whether or not they became ill.
+Statistical test: Chi squared test
+Assumptions:
+1. Randomn sampling
+2. Independent observations
+3. Large sample
+```{r, echo=TRUE}
+library(readr)
+gastroenteritis <- read.csv("C:/Users/Bongeka/Downloads/gastroenteritis.csv")
+foo <- gastroenteritis
+TAB<-table(foo$Consumption, foo$Outcome)
+barplot(TAB)
+chisq.test(TAB)
+```
+Interpretation of results:There is sufficient statistical evidence to conclude that the amount of contamiated water the patient drank is not independent to the patient becoming ill. 
+
+#NAUSEA
+Null: The is no significant statistical difference between how the patients experienced nausea before and after chemotherapy 
+Alternative: There is a significant statistical difference in how patients experienced nausea after chemotherapy.
+Statisitical test: Paired Student T-TEST
+Assumptions: 
+1. Gausian distribution
+2. Equal Variance
+3. Errors are independent
+```{r, echo=TRUE}
+library(readr)
+nausea <- read_csv("C:/Users/Bongeka/Downloads/nausea.csv")
+cols(
+  Patient = col_integer(),
+  Nausea_before = col_integer(),
+  Nausea_after = col_integer()
+)
+boxplot(nausea$Nausea_before ~nausea$Nausea_after)
+
+```
+
+##Assigment 6
+Null:
+Alternative:
+Test: Linear regression
+Assumptions:
+1.Linear trend between x and y
+2.Observations in the sample are independent
+3.x is measured without error
+4.Residuals are normally distributed
+5.Residuals have the same variance for all fo=itted values of y
+```{r, echo=TRUE}
+library(readr)
+housing_prices <-read_csv("C:/Users/Bongeka/Downloads/housing-prices.csv")
+mod <- lm(median_house_price_USD ~ interest_rate, data = housing_prices)
+plot(mod)
+summary(mod)
 ```
